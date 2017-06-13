@@ -1,0 +1,17 @@
+{
+  "name": "android-drag-and-drop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "standard -v"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "electron": "~1.6.2"
+  },
+  "dependencies": {
+    "uid-promise": "^0.1.0"
+  }
+}
