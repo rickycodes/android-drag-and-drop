@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Android Drag and Drop</title>
     <style>
       * {
@@ -19,25 +19,46 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
-        padding: 0 10px 10px 10px;
+        padding: 10px 20px 20px 20px;
       }
       .status {
+        margin-bottom: 10px;
       }
       .holder {
+        text-align: center;
         width: 100%;
         height: 100%;
-        border: 2px dashed black;
+        border: 4px dashed rgba(255, 87, 51, 0.8);
         border-radius: 6px;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: rgba(255, 87, 51, 0.2);
+        transition: all 0.4s ease-out;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='rgba(255, 87, 51, 0.8)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='none'/><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 20%;
+        cursor: no-drop;
+      }
+      .holder.ready {
+        border-color: rgba(40, 180, 99, 0.8);
+        background-image: url("data:image/svg+xml;utf8,<svg fill='rgba(40, 180, 99, 0.8)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='none'/><path d='M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z'/></svg>");
+        background-color: rgba(40, 180, 99, 0.2);
+        cursor: default;
+      }
+      .holder.active {
+        border-color: black;
+        background-image: none;
+        background-color: white;
       }
     </style>
   </head>
   <body>
     <div class='container'>
       <div class='status'></div>
-      <div class='holder'></div>
+      <div class='holder'>
+      </div>
     </div>
   </body>
 
