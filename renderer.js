@@ -22,12 +22,16 @@ const poll = () => {
         output.indexOf(lineBreak), output.length
       ).replace(lineBreak, '').length > 1
 
+      connected
+        ? holder.classList.add('ready')
+        : holder.classList.remove('ready')
+
       const statusText = `device(s) ${
         connected ? '' : 'dis'
       }connected ${
         connected ? '👍' : '💩'
       }`
-      // console.log(statusText)
+
       status.innerText = statusText
       poll()
     })
@@ -40,10 +44,18 @@ holder.ondragover = () => false
 holder.ondragleave = holder.ondragend = () => false
 holder.ondrop = (e) => {
   e.preventDefault()
+  if (!connected) {
+    return false
+  }
+
+  holder.classList.remove('ready')
+  holder.classList.add('active')
+
+  const dest = '/sdcard/'
   for (let f of e.dataTransfer.files) {
     console.log('File(s) you dragged here: ', f.path)
     adb.push({
-      args: [f.path, '/sdcard/'],
+      args: [f.path, dest],
       ondata: (data) => {
         const output = data.toString()
         const percent = output.substring(
@@ -54,6 +66,8 @@ holder.ondrop = (e) => {
             <progress value='${percent}' max='100'>
               ${percent} %
             </progress> ${percent}%
+            <br />
+            <small>Transfering: "${f.name}" to ${dest}</small>
           </div>
         `
       },
