@@ -44,7 +44,7 @@ holder.ondragover = () => false
 holder.ondragleave = holder.ondragend = () => false
 holder.ondrop = (e) => {
   e.preventDefault()
-  if (!connected) {
+  if (!connected || holder.classList.contains('active')) {
     return false
   }
 
@@ -73,6 +73,8 @@ holder.ondrop = (e) => {
       },
       onexit: (code) => {
         console.log(`Child exited with code ${code}`)
+        holder.classList.remove('active')
+        holder.classList.add('ready')
         holder.innerHTML = ''
       }
     }).then(uid => {

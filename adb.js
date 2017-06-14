@@ -1,10 +1,8 @@
 const { exec, spawn } = require('child_process')
 const uid = require('uid-promise')
 const cmd = 'adb'
-const adb = {}
-const noop = () => ({})
-
-adb.tasks = {}
+const adb = { tasks: {} }
+const noop = () => {}
 
 adb.push = (opts) => {
   return new Promise((resolve, reject) => {
