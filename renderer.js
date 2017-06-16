@@ -65,7 +65,9 @@ holder.ondrop = (e) => {
           <div>
             <progress value='${percent}' max='100'>
               ${percent} %
-            </progress> ${percent}%
+            </progress>
+            <br />
+            ${percent}%
             <br />
             <small>Transfering: "${f.name}" to ${dest}</small>
           </div>

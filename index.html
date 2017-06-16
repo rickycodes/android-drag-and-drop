@@ -25,10 +25,12 @@
         margin-bottom: 10px;
       }
       .holder {
+        font-size: 18px;
+        line-height: 20px;
         text-align: center;
         width: 100%;
         height: 100%;
-        border: 4px dashed rgba(255, 87, 51, 0.8);
+        border: 3px dotted rgba(255, 87, 51, 0.8);
         border-radius: 6px;
         display: flex;
         justify-content: center;
@@ -48,10 +50,28 @@
         cursor: default;
       }
       .holder.active {
-        border-color: black;
+        border: none;
         background-image: none;
         background-color: white;
         cursor: no-drop;
+      }
+      .holder small {
+        display: inline-block;
+        margin-top: 10px;
+        width: 60%;
+      }
+      progress {
+        border: 1px solid #BDC3C7;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 14px;
+      }
+      progress[value]::-webkit-progress-bar {
+        background-color: #eee;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+      }
+      progress[value]::-webkit-progress-value {
+        background-color: rgba(40, 180, 99, 0.8);
       }
     </style>
   </head>
