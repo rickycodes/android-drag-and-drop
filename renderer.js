@@ -7,7 +7,6 @@ console.log(`
 const adb = window.adb = require('./adb')
 
 const qs = (selector) => document.querySelector(selector)
-// const { dialog } = require('electron').remote
 
 const status = qs('.status')
 const holder = qs('.holder')
