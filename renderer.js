@@ -11,6 +11,13 @@ const qs = (selector) => document.querySelector(selector)
 const status = qs('.status')
 const holder = qs('.holder')
 
+const reset = () => {
+  if (!Object.keys(adb.tasks).length) {
+    holder.classList.remove('active')
+    holder.classList.add('ready')
+  }
+}
+
 let connected = false
 
 const poll = () => {
@@ -25,11 +32,15 @@ const poll = () => {
         ? holder.classList.add('ready')
         : holder.classList.remove('ready')
 
-      const statusText = `device(s) ${
+      let statusText = `device(s) ${
         connected ? '' : 'dis'
       }connected ${
         connected ? '👍' : '💩'
       }`
+
+      if (Object.keys(adb.tasks).length) {
+        statusText = 'transfering files...'
+      }
 
       status.innerText = statusText
       poll()
@@ -53,6 +64,11 @@ holder.ondrop = (e) => {
   const dest = '/sdcard/'
   for (let f of e.dataTransfer.files) {
     console.log('File(s) you dragged here: ', f.path)
+
+    const card = document.createElement('div')
+    card.setAttribute('class', 'card')
+    holder.appendChild(card)
+
     adb.push({
       args: [f.path, dest],
       ondata: (data) => {
@@ -60,26 +76,24 @@ holder.ondrop = (e) => {
         const percent = output.substring(
           output.indexOf('(') + 1, output.indexOf('%')
         )
-        holder.innerHTML = `
-          <div>
-            <progress value='${percent}' max='100'>
-              ${percent} %
-            </progress>
-            <br />
-            ${percent}%
-            <br />
-            <small>Transfering: "${f.name}" to ${dest}</small>
-          </div>
+        card.innerHTML = `
+          <span class='details'>
+            ${percent}% transfering: "<span class='file'>${f.name}</span>" to ${dest}
+          </span>
+          <progress value='${percent}' max='100'>${percent} %</progress>
         `
       },
       onexit: (code) => {
         console.log(`Child exited with code ${code}`)
-        holder.classList.remove('active')
-        holder.classList.add('ready')
-        holder.innerHTML = ''
+        holder.removeChild(card)
+        reset()
       }
     }).then(uid => {
-      console.log(uid)
+      card.onclick = (e) => {
+        console.log(`close ${uid}`)
+        e.preventDefault()
+        adb.kill(uid)
+      }
     })
   }
   return false

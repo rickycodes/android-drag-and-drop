@@ -3,6 +3,7 @@
   <head>
     <meta charset='UTF-8'>
     <title>Android Drag and Drop</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Roboto+Mono:400|Material+Icons" rel="stylesheet">
     <style>
       * {
         box-sizing: border-box;
@@ -11,8 +12,9 @@
         border: 0;
       }
       html, body {
-        font: 110% sans-serif;
+        font: 14px Roboto, sans-serif;
         height: 100%;
+        color: #444;
       }
       .container {
         display: flex;
@@ -23,18 +25,17 @@
       }
       .status {
         margin-bottom: 10px;
+        line-height: 20px;
       }
       .holder {
-        font-size: 18px;
         line-height: 20px;
         text-align: center;
         width: 100%;
         height: 100%;
-        border: 3px dotted rgba(255, 87, 51, 0.8);
-        border-radius: 6px;
+        border: 3px solid rgba(255, 87, 51, 0.8);
         display: flex;
-        justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column;
         background-color: rgba(255, 87, 51, 0.2);
         transition: all 0.4s ease-out;
         background-image: url("data:image/svg+xml;utf8,<svg fill='rgba(255, 87, 51, 0.8)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='none'/><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z'/></svg>");
@@ -53,25 +54,45 @@
         border: none;
         background-image: none;
         background-color: white;
-        cursor: no-drop;
       }
-      .holder small {
+      .details {
+        width: 100%;
+        align-self: center;
+        margin-left: 20px;
+      }
+      .details .file {
+        max-width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
         display: inline-block;
-        margin-top: 10px;
-        width: 60%;
+        vertical-align: bottom;
+        text-overflow: ellipsis;
       }
       progress {
-        border: 1px solid #BDC3C7;
-        border-radius: 6px;
         overflow: hidden;
-        margin-bottom: 14px;
+        height: 6px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
       }
       progress[value]::-webkit-progress-bar {
-        background-color: #eee;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+        background-color: rgb(186,213,239);
       }
       progress[value]::-webkit-progress-value {
-        background-color: rgba(40, 180, 99, 0.8);
+        background-color: rgb(77,151,240);
+      }
+      .card {
+        position: relative;
+        border: 1px solid lightgrey;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-self: flex-start;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        flex-direction: row;
+        margin-bottom: 10px;
       }
     </style>
   </head>
