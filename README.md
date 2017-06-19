@@ -3,7 +3,7 @@ android-drag-and-drop
 [![build status](https://api.travis-ci.org/rickycodes/android-drag-and-drop.svg?branch=master)](https://travis-ci.org/rickycodes/android-drag-and-drop/) 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) 
 
-<img src='android-drag-and-drop.gif' />
+<img width='600' src='android-drag-and-drop.gif' />
 
 A proof-of-concept electron app for sending files to your android device
 
