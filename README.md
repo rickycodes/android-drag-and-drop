@@ -1,5 +1,7 @@
 android-drag-and-drop
 =========
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/rickycodes/android-drag-and-drop.svg)](https://greenkeeper.io/)
 [![build status](https://api.travis-ci.org/rickycodes/android-drag-and-drop.svg?branch=master)](https://travis-ci.org/rickycodes/android-drag-and-drop/) 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) 
 
