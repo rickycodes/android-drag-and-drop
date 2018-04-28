@@ -9,10 +9,10 @@
   "keywords": [],
   "devDependencies": {
     "electron": "^1.6.11",
-    "standard": "^10.0.2"
+    "standard": "^11.0.1"
   },
   "dependencies": {
-    "uid-promise": "^0.1.0"
+    "uid-promise": "^1.0.0"
   },
   "author": "@rickycodes",
   "license": "MIT",
